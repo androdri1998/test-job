@@ -8,7 +8,7 @@ module.exports = {
   
     res.status(200).send(user);
   },
-  getEmployees: (req, res) => {
+  getEmployees: async (req, res) => {
     const { company_id } = req.params;
     const employees = [
       {
@@ -33,7 +33,7 @@ module.exports = {
   
     res.status(200).send({employees});
   },
-  getTransactions: (req, res) => {
+  getTransactions: async (req, res) => {
     const { company_id } = req.params;
     const transactions = [
       {
