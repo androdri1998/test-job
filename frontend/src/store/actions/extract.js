@@ -1,43 +1,15 @@
+import api from '../../services/api';
+import { urlsCall } from '../../utils/urls.contants';
+
 export const extractActions = {
   GET_TRANSACTIONS: '@company/GET_TRANSACTIONS',
 };
 
 export const getTransactions = async (companyId) => {
-  const transactions = [
-    {
-      company_id: companyId,
-      operation_date: "2020-01-10",
-      operation_type: "SAQUE ATM",
-      operation_value: 450
-    },
-    {
-      company_id: companyId,
-      operation_date: "2020-01-10",
-      operation_type: "SAQUE ATM",
-      operation_value: 450
-    },
-    {
-      company_id: companyId,
-      operation_date: "2020-01-10",
-      operation_type: "SAQUE ATM",
-      operation_value: 450
-    },
-    {
-      company_id: companyId,
-      operation_date: "2020-01-10",
-      operation_type: "SAQUE ATM",
-      operation_value: 450
-    },
-    {
-      company_id: companyId,
-      operation_date: "2020-01-10",
-      operation_type: "SAQUE ATM",
-      operation_value: 450
-    }
-  ]
+  const response = await api.get(urlsCall.GET_TRANSACTIONS.replace(":company_id", companyId));
 
   return {
     type: extractActions.GET_TRANSACTIONS,
-    payload: transactions
+    payload: response.data.transactions
   }
 }
