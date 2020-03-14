@@ -5,6 +5,7 @@ export const userActions = {
 
 export const getUser = async (id) => {
   const user = {
+    id,
     username: "André Rodrigues"
   }
 

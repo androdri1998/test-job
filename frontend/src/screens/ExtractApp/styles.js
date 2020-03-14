@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import colors from '../../utils/colors';
 
-export const ContainerHome = styled.div`
+export const ContainerExtract = styled.div`
 
 `;
 
@@ -11,4 +10,5 @@ export const ContainerBody = styled.div`
 
 export const ContainerTable = styled.div`
   margin-top: 20px;
+  margin-bottom: 20px;
 `;

@@ -2,20 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../store/actions/users';
 import { getEmployees } from '../../store/actions/employees';
-import HomeRender from './HomeRender';
+import EmployeesRender from './EmployeesRender';
 
-const breadcrumbs = [
-  {
-    link: "link",
-    name: "Home",
-  },
-  {
-    link: "link",
-    name: "Employees",
-  }
-]
+import { breadcrumbsEmployees } from '../../utils/breadcrumbs.constants';
 
-export default function HomeApp(){
+export default function EmployeesApp(){
   const dispatch = useDispatch();
   const userFromReducer = useSelector(state => state.userReducer.user);
   const employeesFromReducer = useSelector(state => state.employeesReducer.employees);
@@ -44,20 +35,11 @@ export default function HomeApp(){
   useEffect(() => {
     setEmployees(employeesFromReducer);
   }, [employeesFromReducer]);
-
-  function onClickExtract() {
-
-  }
-  function onClickEmployees() {
-
-  }
   
   return (
-    <HomeRender 
-      onClickExtract={onClickExtract}
-      onClickEmployees={onClickEmployees}
+    <EmployeesRender 
       username={user? user.username: "teste"}
       employees={employees}
-      breadcrumbs={breadcrumbs}/>
+      breadcrumbs={breadcrumbsEmployees}/>
   );
 }

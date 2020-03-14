@@ -8,13 +8,15 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import { getValueTable } from "../../services/filters";
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
 });
 
-export default function TableRender({ columns, data }) {
+function TableRender({ columns, data }) {
   const classes = useStyles();
 
   return (
@@ -33,8 +35,8 @@ export default function TableRender({ columns, data }) {
               <TableRow key={index}>
               {Object.keys(item).map(key => {
                   const searchColumn = columns.filter(column => column.key === key);
-                  return searchColumn
-                    ? (<TableCell key={key} align={searchColumn[0].align}>{item[key]}</TableCell>)
+                  return searchColumn.length > 0
+                    ? (<TableCell key={key} align={searchColumn[0].align}>{getValueTable({value: item[key], type: searchColumn[0].type})}</TableCell>)
                     : null;
               })}
               </TableRow>
@@ -45,3 +47,5 @@ export default function TableRender({ columns, data }) {
     </TableContainer>
   );
 }
+
+export default React.memo(TableRender);

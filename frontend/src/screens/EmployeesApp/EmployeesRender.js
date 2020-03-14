@@ -4,35 +4,31 @@ import Header from '../../components/Header/Header';
 import Table from '../../components/Table/Table';
 import {
   ContainerBody,
-  ContainerHome,
+  ContainerEmployees,
   ContainerTable
 } from './styles';
 
-import { columnEmployees } from '../../utils/columnsTables';
+import { columnsEmployees } from '../../utils/columnsTables';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
-export default function HomeRender({ onClickExtract, onClickEmployees, username, employees, breadcrumbs }){
+export default function EmployeesRender({ username, employees, breadcrumbs }){
   return (
-    <ContainerHome>
+    <ContainerEmployees>
       <Header 
-        onClickExtract={onClickExtract}
-        onClickEmployees={onClickEmployees}
         username={username} />
       <ContainerBody>
         <Breadcrumbs breadcrumbs={breadcrumbs}/>
         <ContainerTable>
           <Table 
             data={employees}
-            columns={columnEmployees}/>
+            columns={columnsEmployees}/>
         </ContainerTable>
       </ContainerBody>
-    </ContainerHome>
+    </ContainerEmployees>
   );
 }
 
-HomeRender.propTypes = {
-  onClickExtract: PropTypes.func.isRequired,
-  onClickEmployees: PropTypes.func.isRequired,
+EmployeesRender.propTypes = {
   username: PropTypes.string.isRequired,
   employees: PropTypes.array.isRequired,
   breadcrumbs: PropTypes.array.isRequired

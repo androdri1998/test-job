@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BreadcrumbsRender from './BreadcrumbsRender';
 
-export default function Breadcrumbs({ breadcrumbs }){
+function Breadcrumbs({ breadcrumbs }){
   return(
     <BreadcrumbsRender 
       breadcrumbs={breadcrumbs}/>
@@ -12,3 +12,5 @@ export default function Breadcrumbs({ breadcrumbs }){
 Breadcrumbs.propTypes = {
   breadcrumbs: PropTypes.array.isRequired
 };
+
+export default React.memo(Breadcrumbs);

@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
+import routesContants from './utils/routes.contants';
 
-import HomeApp from './screens/Home/HomeApp';
+const EmployeesApp = lazy(() => import('./screens/EmployeesApp/EmployeesApp'));
+const ExtractApp = lazy(() => import('./screens/ExtractApp/ExtractApp'));
 
 export default function Routes(){
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={HomeApp}/>
-      </Switch>
-    </Router>
+    <Suspense fallback={<>Carregando...</>}>
+      <Router>
+        <Switch>
+          <Route exact path={routesContants.ROOT} component={EmployeesApp}/>
+          <Route path={routesContants.EMPLOYEES} component={EmployeesApp}/>
+          <Route path={routesContants.EXTRACT} component={ExtractApp}/>
+          <Route path="*" component={() => <Redirect to={routesContants.EMPLOYEES} />}/>
+        </Switch>
+      </Router>
+    </Suspense>
   )
 }

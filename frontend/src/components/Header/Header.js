@@ -1,8 +1,19 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import routesContants from '../../utils/routes.contants';
 import HeaderRender from './HeaderRender';
 
-export default function Header({ onClickExtract, onClickEmployees, username }){
+function Header({ username, history }){
+  function onClickExtract() {
+    history.push(routesContants.EXTRACT);
+  }
+
+  function onClickEmployees() {
+    history.push(routesContants.EMPLOYEES)
+  }
+  
   return(
     <HeaderRender 
       onClickExtract={onClickExtract}
@@ -12,7 +23,7 @@ export default function Header({ onClickExtract, onClickEmployees, username }){
 }
 
 Header.propTypes = {
-  onClickExtract: PropTypes.func.isRequired,
-  onClickEmployees: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired
 };
+
+export default React.memo(withRouter(Header));
