@@ -26,7 +26,7 @@ export default function ExtractApp(){
 
     getUserData();
     getTransactionsData();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     setUser(userFromReducer);

@@ -26,7 +26,7 @@ export default function EmployeesApp(){
 
     getUserData();
     getEmployeesData();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     setUser(userFromReducer);
