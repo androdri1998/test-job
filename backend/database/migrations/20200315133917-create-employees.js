@@ -8,11 +8,11 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.STRING,
       },
-      companyId: {
+      company_id: {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      numberRegistration: {
+      number_registration: {
         allowNull: false,
         autoIncrement: true,
         type: DataTypes.INTEGER,
@@ -25,11 +25,11 @@ module.exports = {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: DataTypes.DATE,
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: DataTypes.DATE,
       },

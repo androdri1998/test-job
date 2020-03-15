@@ -4,4 +4,7 @@ module.exports = {
   database: [name_database],
   host: [host],
   dialect: [dialect],
+  define: {
+    underscored: true
+  }
 }

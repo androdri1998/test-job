@@ -8,27 +8,27 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.STRING,
       },
-      companyId: {
+      company_id: {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      operationDate: {
+      operation_date: {
         allowNull: false,
         type: DataTypes.DATE,
       },
-      operationType: {
+      operation_type: {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      operationValue: {
+      operation_value: {
         allowNull: false,
         type: DataTypes.DOUBLE,
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: DataTypes.DATE,
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: DataTypes.DATE,
       },
