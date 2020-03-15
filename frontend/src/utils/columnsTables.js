@@ -29,6 +29,7 @@ export const columnsTransactions = [
   {
     name: "Value",
     key: "operation_value",
-    align: "right"
+    align: "right",
+    type: "number"
   }
 ];

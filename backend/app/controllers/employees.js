@@ -1,73 +1,34 @@
+const {companys, employees, transactions} = require('../models');
+
 module.exports = {
   getCompany: async (req, res) =>{
     const { company_id } = req.params;
-    const user = {
-      id: company_id,
-      username: "André Rodrigues"
-    }
+    const response = await companys.findAll({
+      where: {
+        id: company_id
+      }
+    }, {raw: true});
   
-    res.status(200).send(user);
+    res.status(200).send(response[0] || null);
   },
   getEmployees: async (req, res) => {
     const { company_id } = req.params;
-    const employees = [
-      {
-        company_id, 
-        number_registration: "0001",
-        name: "André Rodrigues",
-        office: "developer"
-      },
-      {
-        company_id,
-        number_registration: "0002",
-        name: "João Rodrigues",
-        office: "developer"
-      },
-      {
-        company_id,
-        number_registration: "0003",
-        name: "Lís Rodrigues",
-        office: "developer"
-      },
-    ];
+    const response = await employees.findAll({
+      where: {
+        company_id
+      }
+    }, {raw: true});
   
-    res.status(200).send({employees});
+    res.status(200).send({employees: response});
   },
   getTransactions: async (req, res) => {
     const { company_id } = req.params;
-    const transactions = [
-      {
-        company_id,
-        operation_date: "2020-01-10",
-        operation_type: "SAQUE ATM",
-        operation_value: 450
-      },
-      {
-        company_id,
-        operation_date: "2020-01-10",
-        operation_type: "SAQUE ATM",
-        operation_value: 450
-      },
-      {
-        company_id,
-        operation_date: "2020-01-10",
-        operation_type: "SAQUE ATM",
-        operation_value: 450
-      },
-      {
-        company_id,
-        operation_date: "2020-01-10",
-        operation_type: "SAQUE ATM",
-        operation_value: 450
-      },
-      {
-        company_id,
-        operation_date: "2020-01-10",
-        operation_type: "SAQUE ATM",
-        operation_value: 450
+    const response = await transactions.findAll({
+      where: {
+        company_id
       }
-    ];
+    }, {raw: true});
   
-    res.status(200).send({transactions});
+    res.status(200).send({transactions: response});
   }
 }

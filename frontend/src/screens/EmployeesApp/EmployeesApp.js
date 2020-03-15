@@ -5,6 +5,7 @@ import { getEmployees } from '../../store/actions/employees';
 import EmployeesRender from './EmployeesRender';
 
 import { breadcrumbsEmployees } from '../../utils/breadcrumbs.constants';
+import { userId } from '../../utils/userIntial';
 
 export default function EmployeesApp(){
   const dispatch = useDispatch();
@@ -15,12 +16,12 @@ export default function EmployeesApp(){
 
   useEffect(() => {
     const getUserData = async () => {
-      const userData = await getUser(1);
+      const userData = await getUser(userId);
       dispatch(userData);
     }
 
     const getEmployeesData = async () => {
-      const employeesData = await getEmployees(1);
+      const employeesData = await getEmployees(userId);
       dispatch(employeesData);
     }
 

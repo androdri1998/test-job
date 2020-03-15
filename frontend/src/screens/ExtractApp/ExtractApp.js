@@ -5,6 +5,7 @@ import { getTransactions } from '../../store/actions/extract';
 import ExtractRender from './ExtractRender';
 
 import { breadcrumbsExtract } from '../../utils/breadcrumbs.constants';
+import { userId } from '../../utils/userIntial';
 
 export default function ExtractApp(){
   const dispatch = useDispatch();
@@ -15,12 +16,12 @@ export default function ExtractApp(){
 
   useEffect(() => {
     const getUserData = async () => {
-      const userData = await getUser(1);
+      const userData = await getUser(userId);
       dispatch(userData);
     }
 
     const getTransactionsData = async () => {
-      const Data = await getTransactions(1);
+      const Data = await getTransactions(userId);
       dispatch(Data);
     }
 

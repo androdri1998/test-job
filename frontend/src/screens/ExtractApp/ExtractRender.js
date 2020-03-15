@@ -9,6 +9,7 @@ import {
   ContainerTable
 } from './styles';
 
+import { getSaldoReducer } from '../../services/filters';
 import { columnsTransactions } from '../../utils/columnsTables';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
@@ -24,7 +25,12 @@ export default function ExtractRender({ username, transactions, breadcrumbs }){
             data={transactions}
             columns={columnsTransactions}/>
         </ContainerTable>
-        <Typography align="right" variant="h4">Saldo: R$ {transactions.reduce((accumulator, currentValue) => (accumulator + currentValue.operation_value), 0)}</Typography>
+        <Typography 
+          align="right" 
+          variant="h4" 
+          color={transactions.reduce(getSaldoReducer, 0) > 0? "primary": "secondary"}>
+            Saldo: R$ {transactions.reduce(getSaldoReducer, 0)}
+        </Typography>
       </ContainerBody>
     </ContainerExtract>
   );

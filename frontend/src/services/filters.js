@@ -8,3 +8,7 @@ export const getValueTable = ({ value, type }) => {
       return value;
   }
 }
+
+export const getSaldoReducer = (accumulator, currentValue) => {
+  return currentValue.operation_type === 'DEPOSIT' ? (accumulator + currentValue.operation_value): (accumulator - currentValue.operation_value)
+}
