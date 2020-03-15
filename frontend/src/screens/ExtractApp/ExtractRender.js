@@ -29,7 +29,7 @@ export default function ExtractRender({ username, transactions, breadcrumbs }){
           align="right" 
           variant="h4" 
           color={transactions.reduce(getSaldoReducer, 0) > 0? "primary": "secondary"}>
-            Saldo: R$ {transactions.reduce(getSaldoReducer, 0)}
+            Saldo: R$ {transactions.reduce(getSaldoReducer, 0).toLocaleString('pt-BR')}
         </Typography>
       </ContainerBody>
     </ContainerExtract>

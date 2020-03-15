@@ -4,6 +4,8 @@ export const getValueTable = ({ value, type }) => {
   switch(type){
     case "date":
       return moment(value).format("DD/MM/YYYY");
+    case "number":
+      return `R$ ${value.toLocaleString('pt-BR')}`;
     default:
       return value;
   }
